@@ -1,11 +1,11 @@
-let item = document.querySelector('.gallery-item');
-let itemB = item.dataset.src;
-const gallery = document.querySelector('.gallery');
+//let item = document.querySelectorAll('.gallery-item');
+//let itemB = document.getAttribute('data-src');
+//const gallery = document.querySelector('.gallery');
 
-item.addEventListener('click', () => {
-    let itemShow = document.createElement('img');   
-    itemShow.classList.add('gallery-item-show');
-    itemShow.innerHTML = itemB;
+//item.addEventListener('click', () => {/
+   // let itemShow = document.createElement('img');   
+   // itemShow.classList.add('gallery-item-show');
+    //itemShow.innerHTML = itemB;
 
 
     //const createImage = (event) => {
@@ -14,7 +14,7 @@ item.addEventListener('click', () => {
 
         
 
-})
+//})
 
 
 //tool-tips
@@ -28,8 +28,8 @@ const tooltips = (selector) => {
         const elem = event.target;
         const text = elem.dataset.text;
 
-        let y = elem.offsetHeight + 3;
-        let x = elem.offsetWidth + 500;
+        let y = elem.offsetHeight + 20;
+        let x = elem.offsetWidth + 400;
 
 
 
@@ -43,26 +43,32 @@ const tooltips = (selector) => {
         elem.append(tooltipDescribtion);
     }
 
-   // const removeTooltip = event => {
-       // const elem = event.target;
+    const removeTooltip = (event) => {
+        const elem = event.target;
+        const text = elem.dataset.text;
 
-      //  [...elem.children].forEach(child => {
-      //      if(child.classList.contains('tool-tip-element')){
-      //          child.remove();
-      //          tooltipDescribtion = null;
-      //      }
-     //   });
- //   }
+        [...elem.children].forEach(child => {
+            if(child.classList.contains('tool-tip-element')){
+                child.remove();
+                tooltipDescribtion = null;
+            }
+        });
+    }
 
     tooltips.forEach(tooltip => {
         tooltip.addEventListener('mouseover', function(event){
             createTooltip(event);
-
         });
-    })
+    });
+
+    tooltips.forEach(tooltip => {
+        tooltip.addEventListener('mouseout', function(event){
+            removeTooltip(event);
+        });
+    });
 }
 
-tooltips('.tool-tip');
+tooltips('.tooltips');
 //removeTooltip('tool-tip');
 
 //tabs
