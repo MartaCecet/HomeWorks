@@ -15,7 +15,24 @@
         
 
 //})
+const gallery = (selector) => {
+    const galleryItem = document.querySelectorAll(selector);
 
+     let galleryItemBig = null;
+    const createItem = (event) => {
+       
+        let elem = event.target;
+        let img = elem.dataset.src;
+
+        galleryItemBig = document.createElement('div');
+        galleryItemBig.classList.add('gallery-item');
+        galleryItemBig.innerHTML = img;
+
+        elem.append(galleryItemBig);
+
+    }
+}
+gallery('.gallery');
 
 //tool-tips
 const tooltips = (selector) => {
@@ -30,8 +47,6 @@ const tooltips = (selector) => {
 
         let y = elem.offsetHeight + 20;
         let x = elem.offsetWidth + 400;
-
-
 
         tooltipDescribtion = document.createElement('div');
         tooltipDescribtion.classList.add('tool-tip-element');
@@ -69,7 +84,7 @@ const tooltips = (selector) => {
 }
 
 tooltips('.tooltips');
-//removeTooltip('tool-tip');
+
 
 //tabs
 const tabs = (selector) => {
@@ -93,13 +108,19 @@ const tabs = (selector) => {
             [...buttons.children].forEach((btn, i) => {
                 if (btn === button){
                     btn.classList.add('active');
-                    contentHandler([...contents.children], i)///??????
+                    contentHandler([...contents.children], i)
                 }else{
                     btn.classList.remove('active');
                 }
+                  
+                if (btn.classList.contains('add')){
+                    newTab = document.createElement('li');
+                    newTab.classList.add('tab');
+                    newTab.innerHTML = 'prompt';
+                }
 
             });
-
+            
         });
 
     }
