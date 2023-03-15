@@ -48,7 +48,7 @@
     top: 0;
     right: 0;
     opacity: .8;
-    color: rgb(17, 18, 18);
+    color: rgb(245, 249, 249);
     font-size: 40px;
     width: 40px;
     height: 40px;
@@ -56,5 +56,5 @@
 }
 
 .main img {
-
+    width: 100%;
 }
